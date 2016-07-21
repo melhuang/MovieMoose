@@ -21,6 +21,10 @@ import java.util.List;
  */
 public class MoviesAdapter extends ArrayAdapter<Movie> {
 
+    final String IMAGE_BASE_URL = "http://image.tmdb.org/t/p";
+    final String POSTER_WIDTH = "/w154";
+    final String BACKDROP_WIDTH = "/w780";
+
     public MoviesAdapter(Context context, List<Movie> movies) {
         super(context, 0, movies);
     }
@@ -38,9 +42,13 @@ public class MoviesAdapter extends ArrayAdapter<Movie> {
         int orientation = getContext().getResources().getConfiguration().orientation;
         String image;
         if (orientation == Configuration.ORIENTATION_PORTRAIT) {
-            Picasso.with(getContext()).load(movie.poster_path).into(movieImageView);
+            String url = IMAGE_BASE_URL + POSTER_WIDTH + movie.poster_path;
+            Picasso.with(getContext()).load(url).into(movieImageView);
+//            Picasso.with(getContext()).load(movie.poster_path).resize(100, 0).into(movieImageView);
         } else if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            Picasso.with(getContext()).load(movie.backdrop_path).into(movieImageView);
+            String url = IMAGE_BASE_URL + BACKDROP_WIDTH + movie.backdrop_path;
+            Picasso.with(getContext()).load(url).into(movieImageView);
+
         }
 
 
