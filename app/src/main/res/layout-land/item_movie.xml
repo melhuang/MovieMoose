@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/coverImageView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/movieTitle"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/coverImageView"
+        android:layout_toEndOf="@+id/coverImageView" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/movieOverview"
+        android:layout_below="@+id/movieTitle"
+        android:layout_toRightOf="@+id/coverImageView"
+        android:layout_toEndOf="@+id/coverImageView" />
+</RelativeLayout>
