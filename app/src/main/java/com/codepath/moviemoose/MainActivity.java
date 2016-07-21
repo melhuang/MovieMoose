@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -13,6 +14,7 @@ import com.loopj.android.http.*;
 import org.json.JSONObject;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
@@ -23,12 +25,15 @@ public class MainActivity extends Activity {
     final String API_KEY = "7317527cae59a90e9b7f1a166d224d83";
     final String BASE_URL = "http://api.themoviedb.org/3";
     List<Movie> movieList;
+    ListView lvMovies;
+    MoviesAdapter moviesAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         fetchAllMovies();
+        lvMovies = (ListView)findViewById(R.id.lvMovies);
     }
 
 
@@ -62,10 +67,13 @@ public class MainActivity extends Activity {
                 // Handle resulting parsed JSON response here
                 Gson gson = new GsonBuilder().create();
                 movieList = NowPlayingMoviesResponse.parseJSON(response).movieList;
+                moviesAdapter = new MoviesAdapter(getApplicationContext(), movieList);
+                lvMovies.setAdapter(moviesAdapter);
             }
 
             @Override
-            public void onFailure(int statusCode, Header[] headers, String error, Throwable t) {
+//            public void onFailure(int statusCode, Header[] headers, Throwable t, JSONObject object) {
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable t) {
 //                public void onFailure(int statusCode, Header[] headers, String failure, Throwable t) {
                 // called when response HTTP status is "4XX" (eg. 401, 403, 404)
 //                System.out.println("failure: " + failure);

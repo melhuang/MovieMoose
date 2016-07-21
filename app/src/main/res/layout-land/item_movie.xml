@@ -6,7 +6,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/coverImageView"
+        android:id="@+id/movieImageView"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -15,15 +15,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/movieTitle"
+        android:editable="false"
+        android:textColor="#000000"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/coverImageView"
-        android:layout_toEndOf="@+id/coverImageView" />
+        android:layout_toRightOf="@+id/movieImageView"
+        android:layout_toEndOf="@+id/movieImageView" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/movieOverview"
+        android:editable="false"
+        android:textColor="#000000"
         android:layout_below="@+id/movieTitle"
-        android:layout_toRightOf="@+id/coverImageView"
-        android:layout_toEndOf="@+id/coverImageView" />
+        android:layout_toRightOf="@+id/movieImageView"
+        android:layout_toEndOf="@+id/movieImageView" />
 </RelativeLayout>
